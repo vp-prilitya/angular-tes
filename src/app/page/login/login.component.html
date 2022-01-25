@@ -1,0 +1,21 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-3">
+    <h2 class="text-center mb-4">Login Page</h2>
+    <div *ngIf="showError" class="alert alert-danger alert-dismissible fade show" role="alert">
+         User not found
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-group mb-3">
+        <input type="text" formControlName="username" class="form-control" placeholder="Username" autocomplete="username" required>
+      </div>
+      <div class="input-group mb-4"> 
+        <input type="password" formControlName="password" class="form-control" placeholder="Password" autocomplete="current-password" required>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button class="btn btn-primary px-4 btn-block" [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

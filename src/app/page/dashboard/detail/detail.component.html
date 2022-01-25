@@ -1,0 +1,32 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-6">
+    <div class="card mb-2">
+      <div class="card-header">POST</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ data.title }}</h5>
+        <p class="card-text">{{ data.body }}</p>
+        <div *ngIf="!showComment">
+          <a href="javascript: return false;" (click)="commentCheck(true)"><mat-icon class="text-primary" aria-hidden="false" aria-label="Example home icon">comment</mat-icon>
+            {{ comment.length }}</a>
+        </div>
+        <div *ngIf="showComment">
+        
+        <h6 class="text-primary">All Comment</h6>
+       
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngFor="let item of comment">
+          <div class="row">
+            <div class="col-sm-4">
+              <strong>{{ item.name }}</strong>
+            </div>
+            <div class="col-sm-8">
+              {{ item.body }}
+            </div>
+          </div>
+        </div>
+        <a href="javascript: return false;" (click)="commentCheck(false)"><small>Close</small></a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

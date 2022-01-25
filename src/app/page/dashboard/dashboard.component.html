@@ -1,0 +1,25 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-6">
+    <div class="text-right mb-3">
+      <button *ngIf="!currentUser" routerLink="/login" class="btn btn-success my-2 my-sm-0">Login</button>
+      <div *ngIf="currentUser">
+        Welcome, <h5 class="text-primary"><a routerLink="/profile" class="ml-3 btn btn-link">{{ currentUser.name }}</a></h5>
+      </div>
+    </div>
+    <div *ngIf="!currentUser">
+      <h2>Welcome</h2>
+    </div>
+    <div *ngIf="currentUser">
+    <div  class="card mb-2" *ngFor="let item of filterData">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">{{ item.body }}</p>
+        <mat-icon class="text-primary" aria-hidden="false" aria-label="Example home icon">comment</mat-icon>
+        {{ item.totalComment }}  <a routerLink="{{item.id}}/detail" class="ml-3 btn btn-link">Detail</a>
+      </div>
+    </div>
+    </div>
+    <mat-paginator *ngIf="currentUser" [length]="data.length" [pageSize]="size" [pageIndex]="page" [pageSizeOptions]="[10, 30, 60, 100]"
+      (page)="pageChanged($event)"></mat-paginator>
+  </div>
+</div>
